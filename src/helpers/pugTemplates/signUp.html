@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Poppins:400,700&display=swap");
+      *,
+      *::before,
+      *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        box-sizing: border-box;
+        font-family: poppins, sans-serif;
+        font-size: 1.6rem;
+        color: #555;
+      }
+
+      :root {
+      }
+      .wrapper {
+        width: 95%;
+        margin: 2rem auto;
+        height: 100vh;
+        border: 2px solid purple;
+        padding: 10rem 2rem;
+      }
+
+      .logo {
+        text-transform: uppercase;
+        font-family: lato, poppins, sans-serif;
+        font-size: 7rem;
+        font-weight: 700;
+        color: rgb(83, 2, 83);
+      }
+
+      .greeting {
+        font-size: 4rem;
+        padding: 3rem 0rem;
+        font-family: poppins, sans-serif;
+        text-transform: capitalize;
+        color: #000;
+      }
+
+      .message {
+        width: 80%;
+        margin: 0 auto;
+        font-size: 4rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+      }
+
+      .verificationLink {
+        display: inline-block;
+        text-decoration: none;
+        background-color: purple;
+        padding: 1rem 3rem;
+        color: white;
+        text-align: center;
+        margin-top: 2rem;
+        cursor: pointer;
+      }
+
+      .verificationLink:hover,
+      .verificationLink:active {
+        background-color: rgb(58, 0, 58);
+      }
+    </style>
+    <title>Email confirmation</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <p class="logo">Testimony hub</p>
+        <p class="greeting">Welcome innocent</p>
+      </div>
+      <div class="message">
+        <p class="expo">
+          Thanks for joining Testimony Hub. It is our prayer that your testimony
+          would shake the world. However, you first need to confirm your email.
+          Please click button below to confirm.
+        </p>
+        <a class="verificationLink" href="http://facebook.com">Verify Email</a>
+      </div>
+    </div>
+  </body>
+</html>
