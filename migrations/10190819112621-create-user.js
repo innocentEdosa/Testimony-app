@@ -7,34 +7,6 @@ module.exports = {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
     },
-    firstName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        is: {
-          args: [/^[a-z]+$/i],
-          msg: 'Error: first name can only contain letters',
-        },
-        len: {
-          args: [[2, 30]],
-          msg: 'Error: Length of first name cannot be less than two or more than 30',
-        },
-      },
-    },
-    lastName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        is: {
-          args: [/^[a-z]+$/i],
-          msg: 'Error: first name can only contain letters',
-        },
-        len: {
-          args: [[2, 30]],
-          msg: 'Error: Length of first name cannot be less than two or more than 30',
-        },
-      },
-    },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -48,7 +20,10 @@ module.exports = {
     },
     meta: {
       type: Sequelize.JSON,
-      allowNull: false,
+    },
+    isVerified: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
     },
     createdAt: {
       allowNull: false,

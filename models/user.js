@@ -1,33 +1,33 @@
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        is: {
-          args: [/^[a-z]+$/i],
-          msg: 'Error: first name can only contain letters',
-        },
-        len: {
-          args: [[2, 30]],
-          msg: 'Error: Length of first name cannot be less than two or more than 30',
-        },
-      },
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        is: {
-          args: [/^[a-z]+$/i],
-          msg: 'Error: first name can only contain letters',
-        },
-        len: {
-          args: [[2, 30]],
-          msg: 'Error: Length of first name cannot be less than two or more than 30',
-        },
-      },
-    },
+    // firstName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     is: {
+    //       args: [/^[a-z]+$/i],
+    //       msg: 'Error: first name can only contain letters',
+    //     },
+    //     len: {
+    //       args: [[2, 30]],
+    //       msg: 'Error: Length of first name cannot be less than two or more than 30',
+    //     },
+    //   },
+    // },
+    // lastName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     is: {
+    //       args: [/^[a-z]+$/i],
+    //       msg: 'Error: first name can only contain letters',
+    //     },
+    //     len: {
+    //       args: [[2, 30]],
+    //       msg: 'Error: Length of first name cannot be less than two or more than 30',
+    //     },
+    //   },
+    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,7 +41,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     meta: {
       type: DataTypes.JSON,
-      allowNull: false,
+    },
+    isVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   }, {
     freezeTableName: true,
@@ -50,6 +53,11 @@ module.exports = (sequelize, DataTypes) => {
     user.hasMany(models.testimonies, {
       as: 'Testimonies',
       foreignKey: 'userRef',
+    });
+    user.hasOne(models.verifyUser, {
+      as: 'verifyUser',
+      foreignKey: 'userRef',
+      foreignKeyConstraint: true,
     });
   };
   return user;
