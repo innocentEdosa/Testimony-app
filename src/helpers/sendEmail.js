@@ -1,7 +1,7 @@
 import sg from '@sendgrid/mail';
 // import pug from 'pug';
 
-const sgApiKey = process.env.SENDGRID_API_KEYY || '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';
+const sgApiKey = process.env.SENDGRID_API_KEYY;
 sg.setApiKey(sgApiKey);
 export const sendEmail = async (reciever, token) => {
   const msg = {
