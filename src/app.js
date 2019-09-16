@@ -6,11 +6,13 @@ import uuidv4 from 'uuid/v4';
 import dotenv from 'dotenv';
 import schema from './graphQL/schema';
 import db from '../models';
+import auth from './helpers/auth';
 
 const app = express();
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 app.use(cors());
 
+app.use(auth);
 app.use('/graphql', graphqlHTTP((req) => ({
   schema,
   graphiql: true,

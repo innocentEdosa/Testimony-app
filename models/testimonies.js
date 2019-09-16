@@ -25,8 +25,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     freezeTableName: true,
   });
-  testimonies.associate = () => {
-
+  testimonies.associate = (models) => {
+    testimonies.belongsTo(models.user, {
+      as: 'author',
+      foreignKey: 'userRef',
+      foreignKeyConstraint: true,
+    });
   };
   return testimonies;
 };
