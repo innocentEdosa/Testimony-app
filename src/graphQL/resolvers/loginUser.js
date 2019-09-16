@@ -16,10 +16,15 @@ const loginUser = async (input, db) => {
       },
     });
     if (!user) { return throwError('Your password and email combination does not match any on the Testimony Hub'); }
-    const { email, id, password } = user.dataValues;
+    const {
+      email, id, isVerified, password,
+    } = user.dataValues;
+    if (!isVerified) {
+      return throwError('You need to verify your email', { error: 'email not verified' }, 401);
+    }
     const passwordMatch = await bcrypt.compare(inputPassword, password);
     if (passwordMatch) {
-      const token = jwt.sign({ email, id }, process.env.JWT);
+      const token = jwt.sign({ email, id, isVerified }, process.env.JWT);
       user.dataValues.token = token;
       return user.dataValues;
     }
